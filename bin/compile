@@ -68,15 +68,14 @@ echo "-----> Loading Custom Hosts File"
 cp "$ENV_DIR/GIT_DEPLOY_HOSTS" ~/.ssh/config
 chmod 400 ~/.ssh/config
    
-cat ~/.ssh/config
-echo ""
+cat ~/.ssh/config && echo ""
 
 echo "-----> Fetching from $ETE_SYNC_GIT_URL"
 # checkout the revision that's being deployed
-git fetch -a > /dev/null
+git fetch -a
 
 echo "-----> Checking out from ${SOURCE_VERSION:-master}"
-git checkout ${SOURCE_VERSION:-master} > /dev/null
+git checkout ${SOURCE_VERSION:-master}
 
 echo "-----> Checking out all submodules"
 mv .gitmodules.heroku .gitmodules
