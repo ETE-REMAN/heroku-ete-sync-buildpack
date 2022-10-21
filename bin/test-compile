@@ -9,12 +9,12 @@ printenv
 echo "-----> args"
 echo $@
 
-echo "-----> Config Vars"
-#ls "$3"
-for f in $( find $3 -type f ); do
-  echo $f
-  cat $f && echo ""
-done
+# echo "-----> Config Vars"
+# # ls "$3"
+# for f in $( find $3 -type f ); do
+  # echo $f
+  # cat $f && echo ""
+# done
 
 
 APP_DIR="$1"
@@ -95,8 +95,8 @@ echo "-----> Fetching from $ETE_SYNC_GIT_URL"
 # checkout the revision that's being deployed
 git fetch -a
 
-echo "-----> Checking out from ${SOURCE_VERSION:-master}"
-git checkout ${SOURCE_VERSION:-master}
+echo "-----> Checking out from ${HEROKU_TEST_RUN_COMMIT_VERSION:-master}"
+git checkout ${HEROKU_TEST_RUN_COMMIT_VERSION:-master}
 
 echo "-----> Checking out all submodules"
 mv .gitmodules.heroku .gitmodules
