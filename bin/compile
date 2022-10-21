@@ -1,5 +1,13 @@
 #!/bin/bash
 
+echo ""
+echo "-----> Starting submodule buildpack"
+
+echo ""
+printenv
+echo ""
+
+
 APP_DIR="$1"
 ENV_DIR="$3"
 
