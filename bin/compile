@@ -69,6 +69,7 @@ cp "$ENV_DIR/GIT_DEPLOY_HOSTS" ~/.ssh/config
 chmod 400 ~/.ssh/config
    
 cat ~/.ssh/config
+echo ""
 
 echo "-----> Fetching from $ETE_SYNC_GIT_URL"
 # checkout the revision that's being deployed
