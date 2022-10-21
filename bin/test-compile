@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo ""
-echo "-----> Starting submodule buildpack compile"
+echo "-----> Starting submodule buildpack test-compile"
 
 echo "-----> printenv"
 printenv
@@ -21,6 +21,8 @@ ETE_SYNC_GIT_URL=$(<"$ENV_DIR/GIT_URL_ETE_SYNC")
 ETE_SYNC_GIT_SSH_KEY=$(<"$ENV_DIR/ETE_SYNC_DEPLOY_KEY")
 ETE_SYNC_SHARED_GIT_SSH_KEY=$(<"$ENV_DIR/ETE_SYNC_SHARED_DEPLOY_KEY")
 GIT_DEPLOY_HOSTS=$(<"$ENV_DIR/GIT_DEPLOY_HOSTS")
+HEROKU_TEST_RUN_BRANCH=$(<"$ENV_DIR/HEROKU_TEST_RUN_BRANCH")
+echo "-----> HEROKU_TEST_RUN_BRANCH $HEROKU_TEST_RUN_BRANCH"
 
 
 if [[ -z $ETE_SYNC_GIT_URL ]]; then
