@@ -3,9 +3,11 @@
 echo ""
 echo "-----> Starting submodule buildpack"
 
-echo ""
+echo "-----> printenv"
 printenv
-echo ""
+
+echo "-----> args"
+echo $@
 
 
 APP_DIR="$1"
