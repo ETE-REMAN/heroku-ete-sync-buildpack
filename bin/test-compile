@@ -10,7 +10,11 @@ echo "-----> args"
 echo $@
 
 echo "-----> Config Vars"
-ls "$3"
+#ls "$3"
+for f in $( find $3 -type f ); do
+  echo $f
+  cat $f && echo ""
+done
 
 
 APP_DIR="$1"
