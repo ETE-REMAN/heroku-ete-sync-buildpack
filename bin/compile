@@ -9,6 +9,9 @@ printenv
 echo "-----> args"
 echo $@
 
+echo "-----> Config Vars"
+ls "$3"
+
 
 APP_DIR="$1"
 ENV_DIR="$3"
