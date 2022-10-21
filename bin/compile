@@ -3,14 +3,18 @@
 echo ""
 echo "-----> Starting submodule buildpack compile"
 
-echo "-----> printenv"
-printenv
+# echo "-----> printenv"
+# printenv
 
-echo "-----> args"
-echo $@
+# echo "-----> args"
+# echo $@
 
-echo "-----> Config Vars"
-ls "$3"
+# echo "-----> Config Vars"
+# for f in $( find $3 -type f ); do
+  # echo $f
+  # cat $f && echo ""
+# done
+
 
 
 APP_DIR="$1"
@@ -21,6 +25,13 @@ ETE_SYNC_GIT_URL=$(<"$ENV_DIR/GIT_URL_ETE_SYNC")
 ETE_SYNC_GIT_SSH_KEY=$(<"$ENV_DIR/ETE_SYNC_DEPLOY_KEY")
 ETE_SYNC_SHARED_GIT_SSH_KEY=$(<"$ENV_DIR/ETE_SYNC_SHARED_DEPLOY_KEY")
 GIT_DEPLOY_HOSTS=$(<"$ENV_DIR/GIT_DEPLOY_HOSTS")
+
+HEROKU_TEST_RUN_COMMIT_VERSION=$(<"$ENV_DIR/HEROKU_TEST_RUN_COMMIT_VERSION")
+if [[ -z "${SOURCE_VERSION}" ]]; then
+  CHECKOUT_VERSION="{SOURCE_VERSION}"
+else
+  CHECKOUT_VERSION="${HEROKU_TEST_RUN_COMMIT_VERSION}"
+fi
 
 
 if [[ -z $ETE_SYNC_GIT_URL ]]; then
@@ -87,8 +98,8 @@ echo "-----> Fetching from $ETE_SYNC_GIT_URL"
 # checkout the revision that's being deployed
 git fetch -a
 
-echo "-----> Checking out from ${SOURCE_VERSION:-master}"
-git checkout ${SOURCE_VERSION:-master}
+echo "-----> Checking out from ${CHECKOUT_VERSION:-master}"
+git checkout ${CHECKOUT_VERSION:-master}
 
 echo "-----> Checking out all submodules"
 mv .gitmodules.heroku .gitmodules
