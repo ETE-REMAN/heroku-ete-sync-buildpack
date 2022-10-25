@@ -56,9 +56,6 @@ if [[ -z $GIT_DEPLOY_HOSTS ]]; then
     exit 1
 fi
 
-echo "-----> HEROKU_TEST_RUN_COMMIT_VERSION $HEROKU_TEST_RUN_COMMIT_VERSION"
-echo "-----> SOURCE_VERSION $SOURCE_VERSION"
-echo "-----> CHECKOUT_VERSION $CHECKOUT_VERSION"
 
 # make sure we're in the root of the app dir
 cd "$APP_DIR"
