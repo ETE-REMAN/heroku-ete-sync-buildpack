@@ -3,17 +3,17 @@
 echo ""
 echo "-----> Starting submodule buildpack compile"
 
-# echo "-----> printenv"
-# printenv
+echo "-----> printenv"
+printenv
 
-# echo "-----> args"
-# echo $@
+echo "-----> args"
+echo $@
 
-# echo "-----> Config Vars"
-# for f in $( find $3 -type f ); do
-  # echo $f
-  # cat $f && echo ""
-# done
+echo "-----> Config Vars"
+for f in $( find $3 -type f ); do
+  echo $f
+  cat $f && echo ""
+done
 
 
 
@@ -96,7 +96,7 @@ cat ~/.ssh/config && echo ""
 
 echo "-----> Fetching from $ETE_SYNC_GIT_URL"
 # checkout the revision that's being deployed
-git fetch -a
+git fetch -a >/dev/null 2>&1
 
 echo "-----> Checking out from ${CHECKOUT_VERSION:-master}"
 git checkout ${CHECKOUT_VERSION:-master}
