@@ -5,17 +5,17 @@ echo "-----> Starting submodule buildpack compile"
 
 
 
-echo "-----> printenv"
-printenv
+# echo "-----> printenv"
+# printenv
 
-echo "-----> args"
-echo $@
+# echo "-----> args"
+# echo $@
 
-echo "-----> Config Vars"
-for f in $( find $3 -type f ); do
-  echo $f
-  # cat $f && echo ""
-done
+# echo "-----> Config Vars"
+# for f in $( find $3 -type f ); do
+  # echo $f
+  # # cat $f && echo ""
+# done
 
 
 
@@ -29,7 +29,7 @@ ETE_SYNC_SHARED_GIT_SSH_KEY=$(<"$ENV_DIR/ETE_SYNC_SHARED_DEPLOY_KEY")
 GIT_DEPLOY_HOSTS=$(<"$ENV_DIR/GIT_DEPLOY_HOSTS")
 
 HEROKU_TEST_RUN_COMMIT_VERSION=$(<"$ENV_DIR/HEROKU_TEST_RUN_COMMIT_VERSION")
-if [[ -z "${HEROKU_TEST_RUN_COMMIT_VERSION}" ]]; then
+if [[ -z "${SOURCE_VERSION}" ]]; then
   CHECKOUT_VERSION="$HEROKU_TEST_RUN_COMMIT_VERSION"
 else
   CHECKOUT_VERSION="$SOURCE_VERSION"
@@ -56,6 +56,8 @@ if [[ -z $GIT_DEPLOY_HOSTS ]]; then
     exit 1
 fi
 
+echo "-----> HEROKU_TEST_RUN_COMMIT_VERSION $HEROKU_TEST_RUN_COMMIT_VERSION"
+echo "-----> SOURCE_VERSION $SOURCE_VERSION"
 echo "-----> CHECKOUT_VERSION $CHECKOUT_VERSION"
 
 # make sure we're in the root of the app dir
